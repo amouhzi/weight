@@ -327,6 +327,11 @@ class Unit
         }
     }
 
+    public static function __set_state($values)
+    {
+        return new Unit($values['unit']);
+    }
+
     public function __toString()
     {
         return $this->getName();

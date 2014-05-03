@@ -1,17 +1,10 @@
-weight
-======
+PHP Weight Class
+================
 
-PHP Weight Tools
+PHP Weight Class helps developers to work with mass units.
 
 Examples
 ========
-
-Set global number of decimals
------------------------------
-
-```
-Number::setDecimals(2);
-```
 
 Two ways to create new weight
 -----------------------------
@@ -20,6 +13,9 @@ Two ways to create new weight
 
 ```
 $weight = new Weight(300, new Unit('KG'));
+echo $weight; // 300 Kg
+$wight->getValue() // returns 300
+$weight->getUnit() // return Weight/Unit of KG.
 ```
 
 2-
@@ -32,13 +28,13 @@ Print formatted weight
 ----------------------
 
 ```
-echo (string) $weight;
+echo $weight;
 ```
 
 shows
 
 ```
-300.00 Kg
+300 Kg
 ```
 
 Convert to another unit

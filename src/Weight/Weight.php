@@ -27,8 +27,6 @@
 
 namespace Weight;
 
-use Number\Number;
-
 /**
  * Class Weight
  * @package Weight
@@ -73,6 +71,11 @@ class Weight
         $this->unit = $unit;
     }
 
+    public static function __set_state($values)
+    {
+        return new Weight($values['value'], $values['unit']);
+    }
+
     /**
      * Magic function __toString
      *
@@ -80,7 +83,19 @@ class Weight
      */
     public function __toString()
     {
-        return Number::format($this->value) . ' ' . $this->getUnit();
+
+        $decimalPoint = '.';
+        $thousandsSeparator = ',';
+
+        $number = round($this->value, 2);
+        if($number == (int) $number) {
+            $decimals = 0;
+        } else {
+            $decimals = 2;
+        }
+
+        return number_format($this->value, $decimals, $decimalPoint, $thousandsSeparator) .
+        ' ' . $this->getUnit();
     }
 
     /**
